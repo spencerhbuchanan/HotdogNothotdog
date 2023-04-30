@@ -70,6 +70,7 @@ public class RootWindow {
 	}
 
 	public void postInit() {
+		// Image will not scale properly if window not shown (size has not been initialized)
 		initImage();
 	}
 
