@@ -67,8 +67,26 @@ public class MainControl {
 	// Hotdog listeners, listens for buton presses and which one was pressed. Then calls
 	// "playerSelected" with the choice if the player chose "is" or "isnot" hotdog
 	class HotdogListener implements ActionListener {
+		String testNameHolder;
+
+		public HotdogListener() {
+			this.testNameHolder = "NONE";
+		}
+
+		// Having a constructor like this is helpful as you can specify, for example, what button is
+		// being pushed or what card is being clicked. This allows you to have a more general
+		// handler that then knows what button this specific instance is attached to.
+		public HotdogListener(String setName) {
+			// When you initialize/add a new listener to a button, you instantiate this listener
+			// with new HotDogListener(name), and then when that specific button is pushed it
+			// already knows, for example "I am a red 4", rather than having to check with the
+			// ActionEvent args to (hopefully) find out.
+			this.testNameHolder = setName;
+		}
+
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			System.out.println(this.testNameHolder);
 			playerSelected(true);
 		}
 
@@ -79,10 +97,9 @@ public class MainControl {
 		public void actionPerformed(ActionEvent arg0) {
 			playerSelected(false);
 		}
-
 	}
 
-	// Start game listener called when playe selects start or restart?
+	// Start game listener called when player selects start or restart
 	class StartGameListener implements ActionListener {
 
 		@Override
@@ -99,7 +116,7 @@ public class MainControl {
 			root.setScore(0);
 
 			// Adds the controls
-			root.addControlButton("Hotdog", new HotdogListener());
+			root.addControlButton("Hotdog", new HotdogListener("YOOOO"));
 			root.addControlButton("Not Hotdog", new NotHotdogListener());
 
 			// Updates the image
