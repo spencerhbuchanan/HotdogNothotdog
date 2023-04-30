@@ -58,7 +58,6 @@ public class RootWindow {
 		initScorePanel(this.window);
 		initGamePanel(this.window);
 		initBottomControls(this.window);
-		initImage();
 
 		// Passing 'null' to the set relative to will put the window in the center of the screen
 		this.window.setLocationRelativeTo(null);
@@ -66,6 +65,12 @@ public class RootWindow {
 
 	public void show() {
 		this.window.setVisible(true);
+
+		postInit();
+	}
+
+	public void postInit() {
+		initImage();
 	}
 
 	public void update() {
